@@ -1,4 +1,5 @@
 **Descripcion del Proyecto**
+
 Este proyecto se basa en una empresa que requiere un Pagina Web para los clientes, estos que a su vez buscan los servicios de la empresa para adquirir sus productos. En este caso esta empresa se dedica a brindar servicios de software, donde sus clientes pueden presentar una solicitud para poder poner en marcha el desarrollo.
 
 Por otro lado, los usuarios de la empresa también se ven involucrados en este proceso, ya que serán los encargados de recibir las solicitudes en las que aplican sus clientes. Este procesos tiene varias fases, por lo que el cliente se mantendrá en espera mientras, las personas encargadas de velar por que se cumplan los requisitos de las solicitudes emitidas. En el caso de que su solicitud es aprobada o bien no lo es, se le notificara al cliente sobre su estado.
