@@ -6,21 +6,33 @@ Por otro lado, los usuarios de la empresa también se ven involucrados en este p
 
 **Tecnologías Utilizadas**
 
- - Ruby von framework "Ruby on rails"
- - PostgresSQL
- - GitHub
+ - Ruby con el framework "Ruby on rails" utilizando MVC
+ - Base de datos PostgresSQL, utilizando su ORM "Active Record"
+ - Control de versiones GitHub
+ - Controlador de dependencias "Gemfiles"
+ - RSpec para verificar la calidad del código escrito (Testing)
+ 
+ **Gemas Utilizadas**
+ 
+ - Friendly_ID  
+ - Devise  
+ - Ionicon  
+ - Service workers
+ - RSpec
+ - FactoryGirl
+ - Shoulda
+ - NyanCatFormatter
+ 
+ **Testing Automático (RSpec)**
+ - Se implementó FactoryGirl que generara información para probar los modelos y controladores de la aplicación
+ - El uso de Shoulda  para un código más escalable y sostenible.
+ - NyanCatFormatter  que crea un rastro de resultados de pruebas. También cuenta la cantidad de ejemplos a medida que se ejecutan y resalta las especificaciones fallidas y pendientes.
 
-**Funcionalidades del Proyecto**
+**Funcionalidades del Proyecto realizada hasta la fecha**
 
  - [x] Registros y Login
- - [x] Programar vista del registro y login
  - [x] Almacenar datos del formulario de nuevo proyecto de cada usuario 
  - [x] Cargar proyectos de cada usuario
- - [x] Notificacion de nueva solicitud para aprobar el jefe (Mail)
+ - [x] Notificación de nueva solicitud para aprobar el jefe (Mail)
  - [x] Cargar proyectos en el aprobador jefe
  - [x] Asignar precio del proyecto
- - [ ] Aprobador jefe puede filtrar las solicitudes de los ultimos 3 o 6 meses
- - [ ] Aprobador jefe puede cargar solo las solicitudes rechazadas
- - [ ] Aprobador jefe rechaza o aprueba proyecto
- - [ ] Notificacion de condicion del proyecto al cliente (Mail)
- - [ ] Notifiación al aprobador financiero de nueva solicitud de proyecto (mail)
