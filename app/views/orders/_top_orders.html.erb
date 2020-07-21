@@ -1,0 +1,38 @@
+<div class="page animated fadeinup">  
+  <div class="container">
+    <div class="row">
+      <div class="col s12 m6 offset-m3">   
+      <% @top_orders.each do |order| %>
+        <div class="card fullscreen">
+          <div class="card-image">
+            <a href="article.html"><img src="https://res-4.cloudinary.com/swarmly/image/upload/c_fill,g_face:auto,h_467,w_700/v1548242523/ojzeo7cn7vwdo8h3bakf.png" alt=""></a>
+          </div>
+          <div class="card-feedback">
+            <div class="card-users">
+              <i class="material-icons accent-text">monetization_on</i> <span> 300 mil</span>
+            </div>
+            <div class="card-share">
+              <i class="material-icons activator">more_vert</i> <span></span>
+            </div>
+          </div>
+          <div class="card-content">
+            <h5><%= order.description %></h5>
+          </div>
+          <div class="card-author">
+            <div class="media-top-object middle">
+              <img src="https://swarmly.herokuapp.com/assets/noprofile-febbdcf176996dea2d79d17add2622dd9e9605abd6e5f8ccd8d32ea85ff75203.png" alt="" class="media-left avatar small">
+              <div class="media-body">
+                <span class="activator"><%= order.client %> creó una requisición</a></span>
+              </div>
+            </div>
+          </div>
+          <div class="card-reveal">
+            <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+            <p>Here is some more information about this product that is only revealed once clicked on.</p>
+          </div>
+        </div>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>	

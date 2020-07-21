@@ -4,7 +4,8 @@
     <title>Market</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, minimal-ui">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -12,6 +13,9 @@
   <body>
     <%= link_to destroy_user_session_path, method: :delete do %>
       <i class="ion-log-out"></i>
+    <% end %>
+    <% if !current_page?(new_user_session_path) && !current_page?(new_user_registration_path) %>
+      <%= render 'layouts/navigation' %>
     <% end %>
     <%= yield %>
   </body>
