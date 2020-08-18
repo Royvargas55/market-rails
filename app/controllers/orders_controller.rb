@@ -1,7 +1,12 @@
 class OrdersController < ApplicationController
+  before_action :set_order, only: [:show, :edit, :update, :destroy]
   before_action :require_user, except: [:index]
   before_action :require_same_user, only: [:edit, :update, :destroy]
-
+  #before_action :category_orders_statuses_count, only: [:index, :complete]
+  #before_action :all_order_statuses_count, only: [:all_active_orders, :all_complete_orders]
+  def index
+    @order = Order.all
+  end
   # GET /orders/1
   # GET /orders/1.json
   def show
@@ -16,7 +21,6 @@ class OrdersController < ApplicationController
 
   # GET /orders/1/edit
   def edit
-    @category = Category.find(params[:category_id])
     @order = Order.find(params[:id])
   end
 
@@ -41,14 +45,14 @@ class OrdersController < ApplicationController
   # PATCH/PUT /orders/1.json
   def update
     @order = Order.find(params[:id])
-    respond_to do |format|
-      if @order.update(order_params)
-        format.html { redirect_to @order, notice: 'Order was successfully updated.' }
-        format.json { render :show, status: :ok, location: @order }
-      else
-        format.html { render :edit }
-        format.json { render json: @order.errors, status: :unprocessable_entity }
-      end
+    @order.assign_attributes(order_params)
+
+    if @order.save
+      flash[:notice] = "Post was updated."
+      redirect_to [@order.category, @order]
+    else
+      flash.now[:alert] = "There was an error saving the post. Please try again."
+      render :edit
     end
   end
 
@@ -63,7 +67,38 @@ class OrdersController < ApplicationController
     end
   end
 
+  def boss_approved
+    @order = Order.find(params[:id])
+    @order.boss_approved!
+
+    redirect_to root_path, notice: 'You has finished task'
+  end
+
+  def boss_disapproved
+    @order = Order.find(params[:id])
+    @order.boss_disapproved!
+    #ApprovalMailer.new_status(@order.user, @order).deliver_now
+    redirect_to root_path, notice: 'Lets work!'
+  end
+
+  def financial_approved
+    @order = Order.find(params[:id])
+    @order.financial_approved!
+
+    redirect_to root_path, notice: 'Lets work!'
+  end
+
+  def financial_disapproved
+    @order = Order.find(params[:id])
+    @order.financial_disapproved!
+
+    redirect_to root_path, notice: 'Lets work!'
+  end
+
   private
+    def set_order
+      @order = Order.find(params[:id])
+    end
     # Only allow a list of trusted parameters through.
     def order_params
       params.require(:order).permit(:client, :project, :description)

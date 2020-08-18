@@ -1,32 +1,33 @@
-<%= image_tag "wave.png", class: "wave" %>
-<div class="box">
-    <div class="img">
-        <%= image_tag "icono.svg" %>
-    </div>
-    <div class="login-container">
+<div id="toolbar" class="primary-color tool-login"></div>
+<div class="page fullscreen grey lighten-4">
+  <div class="container">
+    <div class="row">
+      <div class="col s12 m6 offset-m3">
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-            <%= image_tag "profile.svg" %>
-            <h2>Bienvenido</h2>
-            <div class="input-div one">
-                <div class="i">
-                  <i class="material-icons">person</i>
-                </div>
-                <div>
-                    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-                </div>
+          <%= render "devise/shared/error_messages", resource: resource %>
+          <div class="login-form z-depth-1">
+            <h1>Inicio de sesión</h1>
+
+            <div class="input-field animated fadeinright">
+              <i class="ion-android-contact prefix"></i>
+              <%= f.email_field :email, class: "validate", autofocus: true, autocomplete: "email" %>
+              <%= f.label :email, "Correo" %>
             </div>
-            <div class="input-div two">
-                <div class="i">
-                  <i class="material-icons">lock</i>
-                </div>
-                <div>
-                    <%= f.password_field :password, autocomplete: "current-password" %>
-                </div>
+
+            <div class="input-field animated fadeinright" style="margin-bottom:20px">
+              <i class="ion-android-lock prefix"></i>
+              <%= f.password_field :password, class: "validate", autocomplete: "current-password" %>
+              <%= f.label :password, "Contraseña" %>
             </div>
-            <%= f.submit "Log in", class: "btn" %>
-            <a href="#">Olvide la contraseña</a>
-            <a href="SignUp.html" class="btn signup">Registrarse</a>
+
+            <%= button_tag(type: "submit", class: "waves-effect waves-light btn-large accent-color width-100 block m-b-20 animated bouncein delay-2") do %>
+              Iniciar sesión
+            <% end %>
+            
             <%= render "devise/shared/links" %>
+          </div>
         <% end %>
+      </div>
     </div>
-</div>
+  </div>
+</div> 

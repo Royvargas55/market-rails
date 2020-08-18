@@ -15,6 +15,8 @@ gem 'faker', '~> 1.6', '>= 1.6.6'
 gem 'serviceworker-rails', '~> 0.5'
 gem 'friendly_id', '~> 5.2.4'
 gem 'jquery-rails', '4.2.1'
+gem 'gravatar_image_tag', github: 'mdeering/gravatar_image_tag'
+gem 'mini_magick', '~> 4.9', '>= 4.9.2'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false

@@ -1,20 +1,29 @@
+<%= render 'layouts/navigation' %> 
 <p id="notice"><%= notice %></p>
-<div class="container">
-  <div class="row">
-    <% @categories.each do |category| %>
-      <div class="col s12 m8 offset-m2">
-        <div class="card purple darken-3">
-          <div class="card-content white-text">
-            <span class="card-title"><%= link_to category.amount, category %></span>
-          </div>
-          <div class="card-action">
-              <%= link_to new_category_order_path(category) do %>
-                Nueva requisición
-              <% end %> 
+<div class="page animated fadeinup">
+  <div class="container">
+    <div class="row">
+      <div class="col s12 m6 offset-m3">
+        <div class="category-card-title">Selecciona un monto de los siguientes</div>
+      </div>
+      <% @categories.each do |category| %>
+        <div class="col s12 m8 offset-m2">
+          <div class="card fullscreen z-depth-1 white p-20 animated fadeinright delay-2">
+            <p class="single-categories-title">
+            <%= link_to new_category_order_path(category) do %>
+              Monto de <%= category.amount %>
+            <% end %>
+            </p>
+            <span class="regular secondary-text"><%= category.orders.count %> REQUISICIONES</span> 
+            <span class="single-categories-underline secondary-text">
+            <%= link_to new_category_order_path(category) do %>
+              <i class="ion-plus accent-text"></i>
+            <% end %>
+            </span>
           </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
 </div>
 

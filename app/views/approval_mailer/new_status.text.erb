@@ -1,0 +1,7 @@
+Nuevo estado en la solicitud "<%= @order.project %>"
+<%= "=" * (@order.project.length + 12) %>
+Hola, esperamos te encuentres bien,
+Te enviamos este correo para notificarte del cambio de estado en tu solicitud <%= @order.project %>,
+puedes abrirla con el enlace de abajo.
+Saludos :)
+Ver nuevo estado de la solicitud: <%= category_order_url(@order.category, @order) %>

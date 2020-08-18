@@ -1,2 +1,35 @@
-        <td><%= order.project %></td>
-        <td><%= order.description %></td>
+      <div class="col s12 m4">   
+        <div class="card fullscreen">
+          <div class="card-image">
+            <%= image_tag "cover.svg" %>
+          </div>
+          <div class="card-feedback">
+            <div class="card-users">
+              <i class="ion-pricetag accent-text"></i> <span><%= order.category.amount unless order.category.amount.nil? %></span>
+            </div>
+            <div class="card-share">
+              <i class="ion-android-more-horizontal activator"></i>
+            </div>
+          </div>
+          <div class="card-content">
+            <h5><%= link_to order.description, category_order_path(order.category, order) %></h5>
+          </div>
+          <div class="card-author">
+            <div class="media-top-object middle">
+              <%= image_tag user_avatar(order.user, 400), class: "media-left avatar small" %>
+              <div class="media-body">
+                <span class="activator"><strong><%= order.client %></strong> creó una requisición</a></span>
+              </div>
+            </div>
+          </div>
+          <div class="card-reveal">
+            <span class="card-title grey-text text-darken-4"><%= order.project %> <i class="ion-android-close right"></i></span>
+            <p><strong>Descripción</strong> <%= order.description %>
+            <br>
+            <strong>Monto</strong> <%= order.category.amount unless order.category.amount.nil? %>
+            <br>
+            <strong>Creada por </strong><%= order.client %>
+            </p>
+          </div>
+        </div>
+      </div>

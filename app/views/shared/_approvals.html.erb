@@ -1,0 +1,25 @@
+          <div class="project-social-share">
+          <% if financial_approver? %>
+            <% if @order.status == 'financial_approved' %>
+              <%= link_to financial_disapproved_category_order_path(@order), method: :put do %>
+                  <i class="ion-close-circled"></i>
+              <% end %>
+            <% else %>
+              <%= link_to financial_approved_category_order_path(@order), method: :put do %>
+                  <i class="ion-checkmark-circled"></i>
+              <% end %>
+            <% end %>
+          <% end %>
+          
+          <% if boss_approver? %>
+            <% if @order.status == 'boss_disapproved' || @order.status.nil? %>
+              <%= link_to boss_approved_category_order_path(@order), method: :put do %>
+                <i class="ion-checkmark-circled"></i>
+              <% end %>
+            <% else %>
+              <%= link_to boss_disapproved_category_order_path(@order), method: :put do %>
+                <i class="ion-close-circled"></i>
+              <% end %>
+            <% end %>
+          <% end %>
+          </div>

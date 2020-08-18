@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h1>Nuevo estado en la solicitud "<%= @order.project %>"</h1>
+    <p>
+        Hola, esperamos te encuentres bien,
+        Te enviamos este correo para notificarte del cambio de estado en tu solicitud <%= @order.project %>,
+        puedes abrirla con el enlace de abajo.
+        Saludos :)
+    </p>
+    <p>
+      <%= link_to "Ver nuevo estado de la solicitud", category_order_url(@order.category, @order) %>
+    </p>
+  </body>
+</html>

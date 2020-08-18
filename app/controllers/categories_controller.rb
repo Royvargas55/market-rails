@@ -18,6 +18,10 @@ class CategoriesController < ApplicationController
     @category = Category.new
   end
 
+  def edit
+    @category = Category.find(params[:id])
+  end
+
   # POST /categories
   # POST /categories.json
   def create
@@ -37,14 +41,16 @@ class CategoriesController < ApplicationController
   # PATCH/PUT /categories/1
   # PATCH/PUT /categories/1.json
   def update
-    respond_to do |format|
-      if @category.update(category_params)
-        format.html { redirect_to @category, notice: 'Category was successfully updated.' }
-        format.json { render :show, status: :ok, location: @category }
-      else
-        format.html { render :edit }
-        format.json { render json: @category.errors, status: :unprocessable_entity }
-      end
+    @category = Category.find(params[:id])
+
+    @category.assign_attributes(category_params)
+
+    if @category.save
+      flash[:notice] = "Topic was updated."
+      redirect_to @category
+    else
+      flash.now[:alert] = "Error saving topic. Please try again."
+      render :edit
     end
   end
 

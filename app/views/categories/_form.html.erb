@@ -1,22 +1,19 @@
-<%= form_with(model: category, local: true) do |form| %>
-  <% if category.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(category.errors.count, "error") %> prohibited this category from being saved:</h2>
+<div class="page animated fadeinup">
+  <div class="container">
+    <div class="row">
+      <div class="col s12 m8 offset-m2">
+        <%= form_for(category), html: {class: "form-inputs"}  do |f| %>
+          <%= render "shared/error_messages", object: category %>
+          <div class="input-field animated fadeinright">
+            <%= f.text_field :amount, class: "validate"%>
+            <%= f.label :amount, "Monto a registrar" %>
+          </div>
 
-      <ul>
-        <% category.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
+          <%= button_tag(type: "submit", class: "waves-effect waves-teal btn-flat", data: { disable_with: "Espera..." }) do %>
+              <%= @category.new_record? ? "Crear nuevo" : "Editar" %>
+          <% end %>
         <% end %>
-      </ul>
+      </div>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :amount %>
-    <%= form.text_field :amount %>
   </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div> 

@@ -1,17 +1,73 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Cliente:</strong>
-  <%= @order.client %>
-</p>
-
-<p>
-  <strong>Project:</strong>
-  <%= @order.project %>
-</p>
-
-<p>
-  <strong>Descriptio:</strong>
-  <%= @order.description %>
-</p>
-
+<%= render 'layouts/navigation' %>
+<style>
+  .hero-material {
+      height: 212px;
+      position: relative;
+      z-index: 1;
+      margin-top: 0.75rem;
+  }
+  .bg {
+      background: url("<%= image_url "cover.svg" %>") no-repeat center/cover !important;
+  }
+  .hero-material .floating-button {
+      position: absolute;
+      bottom: -25px;
+      right: 20px;
+  }
+</style>
+<div class="page animated fadeinup">
+  <div class="container">
+    <div class="row">
+      <div class="col s12 m8 offset-m2">
+        <div class="z-depth-1 hero-material animated fadeindown">
+          <div class="bg">
+            <div class="floating-button animated bouncein delay-3">
+              <%= link_to edit_category_order_path(@order.category, @order) do %>
+                <span class="btn-floating btn-large waves-effect waves-light accent-color z-depth-1">
+                  <i class="ion-android-create"></i>
+                </span>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col s12 m8 offset-m2">
+        <div class="p-20 animated fadeinup delay-1">
+          <h2 class="strong"><%= @order.project %></h2>
+          <span class="small">Monto de la requisición <%= @order.category.amount unless @order.category.amount.nil? %></span>
+          <p class="regular"><%= @order.description %></p>
+        </div>
+        <div class="social-share-author project-author animated fadeinright delay-2">
+          <%= image_tag user_avatar(current_user, 400), class: "avatar" %>
+          <span><%= @order.client %></span>
+          <%= render 'shared/approvals' %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="comments grey lighten-4">
+    <div class="container">
+      <div class="row">
+        <div class="col s12 m8 offset-m2">
+          <h5>Estados de la solicitud</h5>
+          <div class="media-top-object animated fadeinright delay-2">
+            <div class="media-body">
+              <span>Aprobador jefe</span>
+              <span class="small"><%= @order.status == 'boss_approved' ? "Aprobada" : "Rechazada" %></span>
+            </div>
+          </div>
+          <div class="media-top-object animated fadeinright delay-2">
+            <div class="media-body">
+              <span>Aprobador financiero</span>
+              <span class="small"><%= @order.status == 'financial_approved' ? "Aprobada" : "Rechazada" %></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

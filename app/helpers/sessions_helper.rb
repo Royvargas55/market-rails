@@ -8,5 +8,13 @@ module SessionsHelper
     def logged_in?
       !current_user.nil?
     end
+
+    def financial_approver?
+      current_user.role == 3
+    end
+
+    def boss_approver?
+      current_user.role == 1
+    end
 end
   

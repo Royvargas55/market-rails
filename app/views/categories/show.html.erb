@@ -1,8 +1,12 @@
+<%= render 'layouts/navigation' %>
 <p id="notice"><%= notice %></p>
-
-<p>
-  <%= render @category.orders %>
-</p>
+<div class="page animated fadeinup">  
+  <div class="container">
+    <div class="row">
+      <%= render @category.orders %>
+    </div>
+  </div>
+</div>	
 
 <%= link_to 'Edit', edit_category_path(@category) %> |
 <%= link_to 'Back', categories_path %>

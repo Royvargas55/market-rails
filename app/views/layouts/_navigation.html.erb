@@ -1,8 +1,33 @@
-  <nav class="primary-color">
-    <div class="nav-wrapper container">
-      <a href="/" class="brand-logo">Requisiciones</a>
-      <ul class="right hide-on-med-and-down">
-        <li><a href="/categories"><i class="material-icons">create</i></a></li>
-      </ul>
+<div id="toolbar" class="left-only primary-color z-depth-1">
+  <a href="#" class="sidenav-trigger open-left" data-target="slide-out">
+    <i class="ion-android-menu"></i>
+  </a>
+  <a href="/"><h1 class="title">Requisiciones</h1></a>
+</div>
+
+<ul id="slide-out" class="sidenav">
+  <% if logged_in? %>
+  <li>
+    <div class="user-view">
+      <div class="background">
+        <%= image_tag "universe.jpg" %>
+      </div>
+        <a href="users/edit"><%= image_tag user_avatar(current_user, 400), class: "circle" %></a>
+        <a href="users/edit"><span class="white-text name"><%= current_user.username %></span></a>
+        <a href="users/edit"><span class="white-text email"><%= current_user.email %></span></a>
     </div>
-  </nav>
+  </li>
+  <% end %>
+  <li><a href="/categories"><i class="ion-pricetags"></i>Montos a elegir</a></li>
+  <li><a href="/categories"><i class="ion-android-list"></i>Requisiciones</a></li>
+  <li><div class="divider"></div></li>
+  <li><a class="subheader">Opciones de la cuenta</a></li>
+  <li><a href="/users/edit"><i class="ion-android-person"></i>Editar perfil</a></li>
+  <li>
+  <% if logged_in? %>
+    <%= link_to destroy_user_session_path, method: :delete do %>
+      <i class="ion-close"></i> Cerrar sesión
+    <% end %>
+  <% end %>
+  </li>
+</ul>

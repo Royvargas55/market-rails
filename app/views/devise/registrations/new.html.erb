@@ -1,29 +1,39 @@
-<h2>Sign up</h2>
+<div id="toolbar" class="primary-color tool-login"></div>
+<div class="page fullscreen grey lighten-4">
+  <div class="container">
+    <div class="row">
+      <div class="col s12 m6 offset-m3">
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= render "devise/shared/error_messages", resource: resource %>
+          <div class="login-form z-depth-1">
+            <h1>Registro</h1>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+            <div class="input-field animated fadeinright">
+              <i class="ion-android-contact prefix"></i>
+              <%= f.email_field :email, class: "validate", autofocus: true, autocomplete: "email" %>
+              <%= f.label :email, "Correo" %>
+            </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+            <div class="input-field animated fadeinright">
+              <i class="ion-android-lock prefix"></i>
+              <%= f.password_field :password, class: "validate", autocomplete: "current-password" %>
+              <%= f.label :password, "Contraseña" %>
+            </div>
+
+            <div class="input-field animated fadeinright" style="margin-bottom:20px">
+              <i class="ion-android-lock prefix"></i>
+              <%= f.password_field :password_confirmation, class: "validate", autocomplete: "current-password" %>
+              <%= f.label :password_confirmation, "Confirmar contraseña" %>
+            </div>
+
+            <%= button_tag(type: "submit", class: "waves-effect waves-light btn-large accent-color width-100 block m-b-20 animated bouncein delay-2") do %>
+              Registrarme
+            <% end %>
+          
+            <%= render "devise/shared/links" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div> 
