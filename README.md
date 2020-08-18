@@ -36,3 +36,9 @@ Por otro lado, los usuarios de la empresa también se ven involucrados en este p
  - [x] Notificación de nueva solicitud para aprobar el jefe (Mail)
  - [x] Cargar proyectos en el aprobador jefe
  - [x] Asignar precio del proyecto
+ - [x] Notificacion de condicion del proyecto al cliente
+ - [x] Notificacion al aprobados financiero de nueva solicitud de proyecto
+ - [x] Filtro de las solicitudes de los ultimos 3 o 6 meses para aprobador jefe
+ - [x] Carga solicitudes rechazadas por el aprobador jefe
+ - [x]  Carga proyectos segun la categoria del aprobador financiero
+ - [x] Carga solicitudes aprobadas y rechazadas por el aprobador jefe
